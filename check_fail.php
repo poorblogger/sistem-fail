@@ -1,3 +1,30 @@
+<html>
+  <head>
+    <style type="text/css">
+    table {
+        border-collapse: collapse;
+    }        
+    td {
+        border: 1px solid black;
+        padding: 0 0.5em;
+    }        
+    </style>
+  </head>
+  <body>
+  <title>Sistem Carian Fail LPM</title>
+    <table>
+    <h3><center>SISTEM CARIAN FAIL LPM</center></h3>
+     <div>
+           <center> <img src="image/logo.png" alt="myPic" /></center>
+        </div>
+   <h1><font color="red"><center> MAKLUMAT CARIAN</center></font></h1>
+   
+
+    </table>
+  </body>
+</html>
+
+
 <?php
 // Test CVS
 
@@ -65,13 +92,15 @@ $kira= 0;
 for ($i = 1; $i <= $data->sheets[0]['numRows']; $i++) {
 
   if( preg_match("/" . $search_var . "/", $data->sheets[0]['cells'][$i][4]) ) {
-    echo "<br/>";
+    echo "<center><td>";
     echo "Fail ";
     echo $data->sheets[0]['cells'][$i][4];
     echo " Berada di Level ";
     echo $data->sheets[0]['cells'][$i][2];
-    echo"";
+    echo"<br/>";
+    echo "</td></center>";
     $kira=$kira+1;
+
     
    }//if preg_match
    
@@ -82,11 +111,16 @@ for ($i = 1; $i <= $data->sheets[0]['numRows']; $i++) {
   
   if ( $kira==0 )
     {
-        echo "Carian tiada sila <a href='index.php'>Klik Untuk Kembali</a>";
+        echo "<h2><font color='blue'><center>Carian tiada </center></h2></font>";
+         echo "<center> <a href='index.php'><image src='image/back.jpg' height='40'></a></center>";
 
     }
   
-  
+  else
+  {
+    echo "<br/>";
+    echo "<center> <a href='index.php'><image src='image/back.jpg' height='40'></a></center>";
+  }
   
 
 ?>
