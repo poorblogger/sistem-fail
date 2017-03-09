@@ -86,18 +86,26 @@ $data->read('fail.xls');
 
 error_reporting(E_ALL ^ E_NOTICE);
 
-$search_var=$_POST['search'];
+
+$search_var=strtoupper($_POST['search']);
+//$search_var=($_POST['search']);
+
 $kira= 0;
 
 for ($i = 1; $i <= $data->sheets[0]['numRows']; $i++) {
+ 
+  
+ 
 
-  if( preg_match("/" . $search_var . "/", $data->sheets[0]['cells'][$i][4]) ) {
+  if( preg_match("/" . $search_var . "/", $data->sheets[0]['cells'][$i][4])  ) {
     echo "<center><td>";
-    echo "Fail ";
+    echo "Fail   ";
     echo $data->sheets[0]['cells'][$i][4];
-    echo " Berada di Level ";
+    echo " No Rujukan :  ";
+    echo $data->sheets[0]['cells'][$i][3];
+     echo " Di Lokasi  ";
     echo $data->sheets[0]['cells'][$i][2];
-    echo"<br/>";
+    
     echo "</td></center>";
     $kira=$kira+1;
 
@@ -106,6 +114,7 @@ for ($i = 1; $i <= $data->sheets[0]['numRows']; $i++) {
    
 
 }//end for
+
 
 
   
@@ -118,7 +127,11 @@ for ($i = 1; $i <= $data->sheets[0]['numRows']; $i++) {
   
   else
   {
-    echo "<br/>";
+    echo "<center>";
+    
+    echo "<br/>Jumlah Fail Ditemui<br/>";
+    echo $kira;
+    echo"</center>";
     echo "<center> <a href='index.php'><image src='image/back.jpg' height='40'></a></center>";
   }
   
